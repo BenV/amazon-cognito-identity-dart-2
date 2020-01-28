@@ -17,6 +17,10 @@ class CognitoCredentials {
   String sessionToken;
   int expireTime;
   String userIdentityId;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/merge-pr-55
   CognitoCredentials(String identityPoolId, CognitoUserPool pool,
       {String region, String userPoolId}) {
     _pool = pool;
@@ -31,7 +35,7 @@ class CognitoCredentials {
     if (expireTime == null ||
         DateTime.now().millisecondsSinceEpoch > expireTime - 60000) {
       final identityId = CognitoIdentityId(_identityPoolId, _pool);
-      userIdentityId = await identityId.getIdentityId(token);
+      userIdentityId = await identityId.getIdentityId(token, authenticator);
 
       authenticator ??= 'cognito-idp.$_region.amazonaws.com/$_userPoolId';
       final Map<String, String> loginParam = {
